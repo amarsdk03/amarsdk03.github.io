@@ -1,0 +1,182 @@
+:root {
+    --text: #181818;
+    --background: #dadada;
+    --primary: #fff098;
+    --secondary: #b9b9b9;
+    --accent: #443dff;
+
+    --middle-size: min(300px, 75vw);
+    --line-distance: 50%;
+    --menu-spacing: min(20px, 10vw);
+}
+
+@font-face {
+    font-family: "Fira Sans";
+    src: url('assets/fonts/GT-Walsheim-Regular-Trial.otf');
+  }
+
+.index-body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: var(--background);
+}
+
+.body {
+    height: 100vh;
+    margin: 0;
+    background-color: var(--secondary);
+}
+
+.grid {
+    opacity: 0;
+    display: grid;
+    max-width: 200vw;
+    max-height: 100vh;
+    
+    box-shadow: 0 0 20px 20px #38383840;
+    overflow: hidden;
+}
+
+.pixel {
+    background-color: var(--secondary);
+    transition: background-color 0.3s;
+}
+
+.main-div {
+    position: fixed;
+    pointer-events: none;
+
+    width: 100%;
+    height: 100%;
+    top: 0px;
+    left: 0px;
+    z-index: 100;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.main-container {
+    position: relative;
+    display: grid;
+    width: 100vw;
+    height: 100vh;
+
+    grid-template-columns: auto var(--middle-size) auto;
+    grid-template-rows: auto var(--middle-size) auto;
+    align-items: center;
+    justify-items: center;
+}
+
+.line-div {
+    opacity: 0%;
+    height: 100%;
+    width: 100%;
+}
+
+.hz-dashed-line {
+    width: 100%;
+    position: relative;
+    border-top: 2px dashed black;
+}
+
+.vc-dashed-line {
+    height: 100%;
+    position: relative;
+    border-left: 2px dashed black;
+}
+
+.line-text {
+    font-family: 'Courier New', monospace;
+    font-size: 0.8rem;
+    color: var(--text);
+
+    position: absolute;
+    margin: 10px;
+}
+
+.middle {
+    pointer-events: all;
+    width: var(--middle-size);
+    height: var(--middle-size);
+    padding: calc(var(--menu-spacing) / 2);
+    z-index: 10;
+    
+    background-color: var(--secondary);
+    box-shadow: 0 0 20px 10px #38383840;
+    border-radius: 25px;
+
+    display: grid;
+    grid-template-rows: 50% 50%;
+    grid-template-columns: 50% 50%;
+    
+    transition: scale 0.5s, box-shadow 1s;
+}
+
+.middle:hover {
+    scale: 105%;
+    box-shadow: 0 0 50px 5px #ffe57150, inset 0 0 100px 5px #9b9b9b;
+}
+
+.middle-box {
+    margin: calc(var(--menu-spacing) / 2);
+    background-color: var(--background);
+    pointer-events: all;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    box-shadow: 0 0 10px 0 #38383840;
+    border-radius: 10px;
+    
+    transition: scale 0.5s, box-shadow 0.5s, background-color 1s, opacity 0.5s;
+}
+
+.middle-box:hover {
+    scale: 110%;
+    box-shadow: inset 0 0 15px 5px #ffc40035;
+    background-color: #ffce54;
+}
+
+.option-icon {
+    height: min(50px, 10vw);
+    width: auto;
+}
+
+.option-title {
+    font-family: "Fira Sans", Roboto, sans-serif;
+    font-size: min(1rem, 5vw);
+    color: var(--text);
+
+    margin: 0;
+    margin-top: 20px;
+}
+
+.viewport-div {
+    opacity: 0%;
+    pointer-events: none;
+    background-color: white;
+    box-shadow: 0 0 10px 1px #38383844;
+    border: 1px solid black;
+
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    padding: 5px 10px;
+}
+
+.viewport-info {
+    font-size: 0.8rem;
+    font-weight: 600;
+    font-family: 'Courier New', monospace;
+
+    background-color: white;
+    color: var(--text);
+    margin: 0;
+}
