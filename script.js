@@ -58,6 +58,7 @@ function fadeToTransparent() {
     const duration = 0.75;
     const body = document.getElementById("body");
 
+    const mainTitle = document.getElementById("main-title");
     const viewportDiv = document.getElementById("viewport-div");
     const gridBackground = document.getElementById("grid");
     const dashedLines = document.getElementsByClassName("line-div");
@@ -65,17 +66,20 @@ function fadeToTransparent() {
     clearTimeout(timeout);
 
     body.style.transition = `background-color ${duration}s`;
+    mainTitle.style.transition = `opacity ${duration}s`;
     viewportDiv.style.transition = `opacity ${duration}s`;
     gridBackground.style.transition = `opacity ${duration}s`;
     for (let lineDiv of dashedLines) lineDiv.style.transition = `opacity ${duration}s`;
 
     body.style.backgroundColor = 'white';
+    mainTitle.style.opacity = '1';
     viewportDiv.style.opacity = '1';
     gridBackground.style.opacity = '0';
     for (let lineDiv of dashedLines) lineDiv.style.opacity = '1';
 
     timeout = setTimeout(() => {
         body.style.backgroundColor = 'var(--secondary)';
+        mainTitle.style.opacity = '0.3';
         viewportDiv.style.opacity = '0';
         gridBackground.style.opacity = '1';
         for (let lineDiv of dashedLines) lineDiv.style.opacity = '0';
