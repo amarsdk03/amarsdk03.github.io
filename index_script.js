@@ -101,6 +101,8 @@ function fadeToTransparent() {
 }
 
 function pageTransition(id) {
+    resetTransitions();
+    
     let redirect;
     const middle = document.getElementById("middle");
     const middleBox = document.getElementsByClassName("middle-box");
@@ -145,7 +147,7 @@ function pageTransition(id) {
 
 document.addEventListener('DOMContentLoaded', function() {
     resetTransitions();
-    
+
     updateViewportText();
     fadeToTransparent();
     
