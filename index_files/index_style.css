@@ -12,7 +12,7 @@
 
 @font-face {
     font-family: "Fira Sans";
-    src: url('assets/fonts/GT-Walsheim-Regular-Trial.otf');
+    src: url('../assets/fonts/GT-Walsheim-Regular-Trial.otf');
 }
 
 .index-body {
