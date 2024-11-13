@@ -52,6 +52,20 @@ function generatePixel(pixelSize, trailColor) {
     return pixel;
 }
 
+function resetTransitions() {
+    const middle = document.getElementById("middle");
+    const middleBox = document.getElementsByClassName("middle-box");
+    
+    middle.style.transitionDuration = '0s';
+    middle.style.scale = '100%';
+    middle.style.transitionTimingFunction = '';
+
+    for (let opt of middleBox) {
+        opt.style.pointerEvents = 'auto';
+        opt.style.opacity = '1';
+    }
+}
+
 let timeout;
 
 function fadeToTransparent() {
@@ -130,6 +144,8 @@ function pageTransition(id) {
 }
 
 document.addEventListener('DOMContentLoaded', function() {
+    resetTransitions();
+    
     updateViewportText();
     fadeToTransparent();
     
