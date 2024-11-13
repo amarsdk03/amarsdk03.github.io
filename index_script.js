@@ -125,7 +125,7 @@ function pageTransition(id) {
 
         setTimeout(() => {
             window.location.href = redirect + ".html";
-        }, 500);
+        }, 800);
     }, 100);
 }
 

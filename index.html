@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Amar Sidkir</title>
+
+    <link rel='stylesheet' type='text/css' media='screen' href="index_style.css">
+    <script src="index_script.js"></script>
+
+    <style>
+    </style>
+</head>
+
+<body id="body" class="index-body">
+    <div id="title-div" class="title-div">
+        <h1 id="main-title" class="main-title">amarsdk03</h1>
+    </div>
+
+    <div class="main-div">
+        <div class="main-container">
+            <div></div>
+            <div class="line-div">
+                <div class="vc-dashed-line" style="left: var(--line-distance)">
+                    <p class="line-text vc-line-text"></p>
+                </div>
+            </div>
+            <div></div>
+            <div class="line-div">
+                <div class="hz-dashed-line" style="top: var(--line-distance)">
+                    <p class="line-text hz-line-text"></p>
+                </div>
+            </div>
+            <div id="middle" class="middle">
+                <div class="middle-box" onclick="pageTransition(1)" style="cursor: pointer">
+                    <img class="option-icon" src="assets/icons/about_me.svg">
+                    <h6 class="option-title">About me</h6>
+                </div>
+                <div class="middle-box" onclick="pageTransition(2)" style="cursor: pointer">
+                    <img class="option-icon" src="assets/icons/projects.svg">
+                    <h6 class="option-title">Projects</h6>
+                </div>
+                <div class="middle-box" onclick="pageTransition(3)" style="cursor: pointer">
+                    <img class="option-icon" src="assets/icons/notes.svg">
+                    <h6 class="option-title">Notes</h6>
+                </div>
+                <div class="middle-box" onclick="pageTransition(4)" style="cursor: pointer">
+                    <img class="option-icon" src="assets/icons/resources.svg">
+                    <h6 class="option-title">Resources</h6>
+                </div>
+            </div>
+            <div class="line-div">
+                <div class="hz-dashed-line" style="top: calc(100% - var(--line-distance))"></div>
+            </div>
+            <div></div>
+            <div class="line-div">
+                <div class="vc-dashed-line" style="left: calc(100% - var(--line-distance))"></div>
+            </div>
+            <div></div>
+        </div>
+    </div>
+
+    <div id="viewport-div" class="viewport-div">
+        <p id="viewport-info" class="viewport-info">?</p>
+    </div>
+
+    <div id="grid" class="grid" style="visibility: visible;"></div>
+</body>
+
+</html>
