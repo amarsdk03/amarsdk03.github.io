@@ -27,7 +27,7 @@ function randomPixelColor(opacity) {
 }
 
 function generatePixel(pixelSize, trailColor) {
-    const threshold = 0.5, grayLimit = 200, whiteLimit = 0.25, mouseOutDelay = 200;
+    const threshold = 1, grayLimit = 200, whiteLimit = 0.5, mouseOutDelay = 200;
     const pixel = document.createElement('div');
 
     pixel.classList.add('pixel');
@@ -52,44 +52,17 @@ function generatePixel(pixelSize, trailColor) {
     return pixel;
 }
 
-function resetTransitions() {
-    const middle = document.getElementById("middle");
-    const middleBox = document.getElementsByClassName("middle-box");
-    
-    middle.style.transitionDuration = '0s';
-    middle.style.scale = '100%';
-    middle.style.transitionTimingFunction = '';
-
-    for (let opt of middleBox) {
-        opt.style.pointerEvents = 'auto';
-        opt.style.opacity = '1';
-    }
-}
-
 let timeout;
 
 function fadeToTransparent() {
     const duration = 0.75;
     const body = document.getElementById("body");
+    clearTimeout(timeout);
 
     const mainTitle = document.getElementById("main-title");
     const viewportDiv = document.getElementById("viewport-div");
     const gridBackground = document.getElementById("grid");
     const dashedLines = document.getElementsByClassName("line-div");
-
-    clearTimeout(timeout);
-
-    body.style.transition = `background-color ${duration}s`;
-    mainTitle.style.transition = `opacity ${duration}s`;
-    viewportDiv.style.transition = `opacity ${duration}s`;
-    gridBackground.style.transition = `opacity ${duration}s`;
-    for (let lineDiv of dashedLines) lineDiv.style.transition = `opacity ${duration}s`;
-
-    body.style.backgroundColor = 'white';
-    mainTitle.style.opacity = '1';
-    viewportDiv.style.opacity = '1';
-    gridBackground.style.opacity = '0';
-    for (let lineDiv of dashedLines) lineDiv.style.opacity = '1';
 
     timeout = setTimeout(() => {
         body.style.backgroundColor = 'var(--secondary)';
@@ -97,12 +70,10 @@ function fadeToTransparent() {
         viewportDiv.style.opacity = '0';
         gridBackground.style.opacity = '1';
         for (let lineDiv of dashedLines) lineDiv.style.opacity = '0';
-    }, duration * 2000);
+    }, 0);
 }
 
 function pageTransition(id) {
-    resetTransitions();
-
     let redirect;
     const middle = document.getElementById("middle");
     const middleBox = document.getElementsByClassName("middle-box");
@@ -141,18 +112,25 @@ function pageTransition(id) {
 
         setTimeout(() => {
             window.location.href = redirect + ".html";
-            resetTransitions();
+            middle.style.scale = "100%";
+            
+            setTimeout(() => {
+                for (let opt of middleBox) {
+                    opt.style.pointerEvents = 'fill';
+                    opt.style.opacity = '1';
+                }
+            }, 1000);
         }, 800);
     }, 100);
 }
 
 document.addEventListener('DOMContentLoaded', function() {
-    resetTransitions();
+    const renderGrid = true;
 
     updateViewportText();
     fadeToTransparent();
     
-    const pixelSize = 12, gridGap = 1, trailColor = 'rgb(128, 128, 128)';
+    const pixelSize = 12, gridGap = 0, trailColor = 'rgb(128, 128, 128)';
     const grid = document.getElementById('grid');
     const gridWidth = Math.floor(screen.width / pixelSize) + 1;
     const gridHeight = Math.floor(screen.height / pixelSize) + 1;
@@ -161,7 +139,7 @@ document.addEventListener('DOMContentLoaded', function() {
     grid.style.gridTemplateColumns = `repeat(${gridWidth}, ${pixelSize}px)`;
     grid.style.gridTemplateRows = `repeat(${gridHeight}, ${pixelSize}px)`;
     
-    for (let i = 0; i < gridWidth * gridHeight; i++) {
+    for (let i = 0; renderGrid && i < gridWidth * gridHeight; i++) {
         grid.appendChild(generatePixel(pixelSize, trailColor));
     }
 

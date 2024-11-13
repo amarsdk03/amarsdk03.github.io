@@ -15,6 +15,11 @@
     src: url('assets/fonts/GT-Walsheim-Regular-Trial.otf');
 }
 
+.body {
+    background-color: #fff;
+    transition: background-color 0.75s;
+}
+
 .index-body {
     background-color: var(--background);
 
@@ -34,6 +39,8 @@
     
     box-shadow: 0 0 20px 20px #38383840;
     overflow: hidden;
+    
+    transition: opacity 0.75s;
 }
 
 .pixel {
@@ -69,9 +76,11 @@
 }
 
 .line-div {
-    opacity: 0%;
+    opacity: 1;
     height: 100%;
     width: 100%;
+    
+    transition: opacity 0.75s;
 }
 
 .hz-dashed-line {
@@ -172,15 +181,18 @@
     right: 0;
     margin: 0;
     
+    opacity: 1;
     font-family: "Fira Sans", Roboto, sans-serif;
     font-size: 15vw;
     white-space: nowrap;
     color: var(--text);
     text-shadow: 6px 4px 0 #0000003f;
+
+    transition: opacity 0.75s;
 }
 
 .viewport-div {
-    opacity: 0%;
+    opacity: 1;
     pointer-events: none;
     background-color: white;
     box-shadow: 0 0 10px 1px #38383844;
@@ -191,6 +203,8 @@
     right: 10px;
     z-index: 90;
     padding: 5px 10px;
+
+    transition: opacity 0.75s;
 }
 
 .viewport-info {
