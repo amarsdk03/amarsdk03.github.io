@@ -102,7 +102,7 @@ function fadeToTransparent() {
 
 function pageTransition(id) {
     resetTransitions();
-    
+
     let redirect;
     const middle = document.getElementById("middle");
     const middleBox = document.getElementsByClassName("middle-box");
@@ -141,6 +141,7 @@ function pageTransition(id) {
 
         setTimeout(() => {
             window.location.href = redirect + ".html";
+            resetTransitions();
         }, 800);
     }, 100);
 }
