@@ -55,9 +55,8 @@ function generatePixel(pixelSize, trailColor) {
 let timeout;
 
 function fadeToTransparent() {
-    const duration = 0.75;
-    const body = document.getElementById("body");
     clearTimeout(timeout);
+    const duration = 0.75;
 
     const mainTitle = document.getElementById("main-title");
     const viewportDiv = document.getElementById("viewport-div");
@@ -65,12 +64,11 @@ function fadeToTransparent() {
     const dashedLines = document.getElementsByClassName("line-div");
 
     timeout = setTimeout(() => {
-        body.style.backgroundColor = 'var(--secondary)';
         mainTitle.style.opacity = '0.3';
         viewportDiv.style.opacity = '0';
         gridBackground.style.opacity = '1';
         for (let lineDiv of dashedLines) lineDiv.style.opacity = '0';
-    }, 0);
+    }, duration + 1000);
 }
 
 function pageTransition(id) {

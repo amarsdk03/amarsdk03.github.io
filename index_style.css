@@ -15,11 +15,6 @@
     src: url('assets/fonts/GT-Walsheim-Regular-Trial.otf');
 }
 
-.body {
-    background-color: #fff;
-    transition: background-color 0.75s;
-}
-
 .index-body {
     background-color: var(--background);
 
