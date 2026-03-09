@@ -1,2 +1,2 @@
-# Amar Sidkir - Website portfolio
-*to be finished*
+# Amar Sidkir - Personal webpage and portfolio
+https://amarsdk03.github.io/

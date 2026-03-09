@@ -114,6 +114,7 @@ p {
 }
 
 .bold-p {
+    color: black;
     font-size: 1.5rem;
     font-weight: 700;
     line-height: 1 1.8;
@@ -211,4 +212,18 @@ del {
 .pixel {
     background-color: var(--secondary);
     transition: background-color 0.3s;
+}
+
+.section-heading {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.section-icon {
+    width: 1.1em;
+    height: 1.1em;
+    display: inline-block;
+    flex-shrink: 0;
+    object-fit: contain;
 }
