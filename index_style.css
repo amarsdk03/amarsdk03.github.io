@@ -1,13 +1,11 @@
 :root {
-    --text: #181818;
-    --background: #dadada;
-    --primary: #fff098;
-    --secondary: #b9b9b9;
+    --text: #333333;
+    --background: #ffffff;
+    --primary: #ffffff;
+    --secondary: #ffcd38;
     --accent: #443dff;
 
-    --middle-size: min(300px, 75vw);
-    --line-distance: 50%;
-    --menu-spacing: min(20px, 10vw);
+    --main-content-width: 850px;
 }
 
 @font-face {
@@ -22,35 +20,17 @@
     justify-content: center;
     align-items: center;
 
-    height: 100vh;
+    min-height: 100vh;
     margin: 0;
 }
 
-.grid {
-    opacity: 0;
-    display: grid;
-    max-width: 200vw;
-    max-height: 100vh;
-    
-    box-shadow: 0 0 20px 20px #38383840;
-    overflow: hidden;
-    
-    transition: opacity 0.75s;
-}
-
-.pixel {
-    background-color: var(--secondary);
-    transition: background-color 0.3s;
-}
-
-.main-div {
+.background-div {
     position: fixed;
     pointer-events: none;
 
-    width: 100%;
-    height: 100%;
-    top: 0px;
-    left: 0px;
+    width: 100vw;
+    height: 100vh;
+    inset: 0;
     z-index: 100;
     
     display: flex;
@@ -58,116 +38,113 @@
     align-items: center;
 }
 
-.main-container {
-    position: relative;
-    display: grid;
-    width: 100vw;
-    height: 100vh;
-
-    grid-template-columns: auto var(--middle-size) auto;
-    grid-template-rows: auto var(--middle-size) auto;
-    align-items: center;
-    justify-items: center;
-}
-
 .line-div {
+    position: absolute;
     opacity: 1;
-    height: 100%;
-    width: 100%;
+    height: 100vh;
+    width: 100vw;
     
     transition: opacity 0.75s;
 }
 
-.hz-dashed-line {
-    width: 100%;
-    position: relative;
-    border-top: 2px dashed black;
-}
-
-.vc-dashed-line {
-    height: 100%;
-    position: relative;
-    border-left: 2px dashed black;
-}
-
-.line-text {
+.dashed-line-text {
     font-family: 'Courier New', monospace;
-    font-size: 0.8rem;
+    font-size: min(0.8rem, 4vw);
     color: var(--text);
 
     position: absolute;
     margin: 10px;
 }
 
-.middle {
-    pointer-events: all;
-    width: var(--middle-size);
-    height: var(--middle-size);
-    padding: calc(var(--menu-spacing) / 2);
-    z-index: 10;
+.hz-dashed-line {
+    position: fixed;
+    left: 0;
+    top: 50%;
+    width: 100vw;
+    border-top: 2px dashed black;
+    transform: translateY(-1px);
+}
+
+.vc-dashed-line {
+    position: fixed;
+    top: 0;
+    left: 50%;
+    height: 100vh;
+    border-left: 2px dashed black;
+    transform: translateX(-1px);
+}
+
+.main-content-container {
+    z-index: 100;
+    padding: clamp(20px, 3vw, 50px) max(20px, 50% - var(--main-content-width) / 2);
+
+    top: clamp(20px, 5vw, 50px);
+    left: max(20px, 50% - var(--main-content-width) / 2);
+    right: max(20px, 50% - var(--main-content-width) / 2);
+    margin-bottom: 150px;
+}
+
+.main-content-div {
+    max-width: var(--main-content-width);
+    padding: 10px 30px 25px;
+
+    background-color: var(--primary);
+    border: 1px solid #38383823;
+    box-shadow: 8px 8px 30px 0px #38383852;
+    border-radius: 5px;  
     
-    background-color: var(--secondary);
-    box-shadow: 0 0 20px 10px #38383840;
-    border-radius: 25px;
-
-    display: grid;
-    grid-template-rows: 50% 50%;
-    grid-template-columns: 50% 50%;
-    
-    transition: scale 0.5s, box-shadow 1s;
+    font-family: Roboto, sans-serif;
 }
 
-.middle:hover {
-    scale: 105%;
-    box-shadow: 0 0 50px 5px #ffe57150, inset 0 0 100px 5px #9b9b9b;
+h1 {
+    font-size: 2.5rem;
+    line-height: 0.7;
+    letter-spacing: -0.02em;
 }
 
-.middle-box {
-    margin: calc(var(--menu-spacing) / 2);
-    background-color: var(--background);
-    pointer-events: all;
-    
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
-    box-shadow: 0 0 10px 0 #38383840;
-    border-radius: 10px;
-    
-    transition: scale 0.5s, box-shadow 0.5s, background-color 1s, opacity 0.5s;
+h2 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin-top: 40px;
 }
 
-.middle-box:hover {
-    scale: 110%;
-    box-shadow: inset 0 0 15px 5px #ffc40035;
-    background-color: #ffce54;
-}
-
-.option-icon {
-    height: min(50px, 10vw);
-    width: auto;
-}
-
-.option-title {
-    font-family: "Fira Sans", Roboto, sans-serif;
-    font-size: min(1rem, 5vw);
+p {
     color: var(--text);
+    font-size: 1.08rem;
+}
 
-    margin: 0;
-    margin-top: 20px;
+.bold-p {
+    font-size: 1.5rem;
+    font-weight: 700;
+    line-height: 1 1.8;
+}
+
+.section-p {
+    opacity: 0.75;
+    font-style: italic;
+    font-size: 1rem;
+    line-height: 0.4;
+}
+
+del {
+    opacity: 0.65;
+    text-decoration-color: #000000;
 }
 
 .title-div {
     position: fixed;
     overflow: hidden;
-    bottom: -5vw;
-    right: -5vh;
+    bottom: calc(-3vw + 1%);
+    right: calc(-5vw + 2%);
 
     width: 100%;
     height: 100%;
     z-index: 80;
-    pointer-events: none;
+
+    cursor: default;
+    user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
 }
 
 .main-title {
@@ -176,14 +153,19 @@
     right: 0;
     margin: 0;
     
-    opacity: 1;
+    opacity: var(--main-title-opacity, 1);
     font-family: "Fira Sans", Roboto, sans-serif;
     font-size: 15vw;
     white-space: nowrap;
     color: var(--text);
     text-shadow: 6px 4px 0 #0000003f;
 
-    transition: opacity 0.75s;
+    transition: opacity 0.75s, text-shadow 0.75s;
+}
+
+.main-title:hover {
+    opacity: 0.8;
+    text-shadow: 14px 12px 0 #0000003f;
 }
 
 .viewport-div {
@@ -193,10 +175,10 @@
     box-shadow: 0 0 10px 1px #38383844;
     border: 1px solid black;
 
-    position: absolute;
+    position: fixed;
     bottom: 10px;
     right: 10px;
-    z-index: 90;
+    z-index: 120;
     padding: 5px 10px;
 
     transition: opacity 0.75s;
@@ -210,4 +192,23 @@
     background-color: white;
     color: var(--text);
     margin: 0;
+}
+
+.grid {
+    z-index: 0;
+    position: fixed;
+    display: grid;
+
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+
+    overflow: hidden;
+    opacity: 0;
+    transition: opacity 0.75s;
+}
+
+.pixel {
+    background-color: var(--secondary);
+    transition: background-color 0.3s;
 }
