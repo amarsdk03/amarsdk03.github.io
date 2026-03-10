@@ -8,9 +8,6 @@ function updateViewportText() {
     verticallTextLabel.innerText = window.innerHeight + "px";
 }
 
-let fadeTimeout;
-let resizeTimeout;
-
 function setElementsOpacity(mainTitleOpacity, viewportOpacity, linesOpacity, gridOpacity) {
     const mainTitle = document.getElementById("main-title");
     const viewportDiv = document.getElementById("viewport-div");
@@ -30,8 +27,11 @@ function fadeToTransparent() {
 
     fadeTimeout = setTimeout(() => {
         setElementsOpacity(0.3, 0, 0, 1);
+        // generateGrid();
     }, 1000);
 }
+
+let fadeTimeout, resizeTimeout;
 
 function refadeOnResize() {
     clearTimeout(fadeTimeout);
@@ -41,6 +41,7 @@ function refadeOnResize() {
 
     resizeTimeout = setTimeout(() => {
         fadeToTransparent();
+        // generateGrid();
     }, 500);
 }
 
@@ -59,36 +60,44 @@ function generatePixel(pixelSize) {
     const pixel = document.createElement('div');
 
     pixel.classList.add('pixel');
-    pixel.style.width = pixelSize;
-    pixel.style.height = pixelSize;
+    pixel.style.width = `${pixelSize}px`;
+    pixel.style.height = `${pixelSize}px`;
     pixel.style.backgroundColor = randomGrayColor();
+    pixel.style.animationDelay = `${Math.random() * 1000}ms`;
 
     return pixel;
 }
 
+let lastScreenW = 0, lastScreenH = 0;
+
 function generateGrid() {
-    const pixelSize = 12, gridGap = 0;
+    if (screen.width === lastScreenW && screen.height === lastScreenH) return;
+    lastScreenW = screen.width;
+    lastScreenH = screen.height;
+
+    const pixelSize = 12;
     const grid = document.getElementById('grid');
     const gridWidth = Math.floor(screen.width / pixelSize) + 1;
     const gridHeight = Math.floor(screen.height / pixelSize) + 1;
 
-    grid.style.gap = `${gridGap}px`;
     grid.style.gridTemplateColumns = `repeat(${gridWidth}, ${pixelSize}px)`;
     grid.style.gridTemplateRows = `repeat(${gridHeight}, ${pixelSize}px)`;
-    
+
+    const fragment = document.createDocumentFragment();
     for (let i = 0; i < gridWidth * gridHeight; i++) {
-        grid.appendChild(generatePixel(pixelSize));
+        fragment.appendChild(generatePixel(`${pixelSize}px`));
     }
+
+    grid.innerHTML = '';
+    grid.appendChild(fragment);
 }
 
 document.addEventListener('DOMContentLoaded', function() {
     updateViewportText();
     fadeToTransparent();
-    generateGrid();
 
     window.addEventListener('resize', () => {
         updateViewportText();
         refadeOnResize();
-        generateGrid();
     });
 });
