@@ -96,6 +96,7 @@
 }
 
 .home-title {
+    font-family: "Fira Sans", sans-serif;
     font-size: clamp(2rem, 5.5vw, 3.5rem);
     line-height: 0.9;
     letter-spacing: -0.02em;
