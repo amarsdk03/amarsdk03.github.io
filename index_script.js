@@ -27,7 +27,6 @@ function fadeToTransparent() {
 
     fadeTimeout = setTimeout(() => {
         setElementsOpacity(0.3, 0, 0, 1);
-        // generateGrid();
     }, 1000);
 }
 
@@ -41,7 +40,7 @@ function refadeOnResize() {
 
     resizeTimeout = setTimeout(() => {
         fadeToTransparent();
-        // generateGrid();
+        generateGrid();
     }, 500);
 }
 
@@ -68,10 +67,10 @@ function generatePixel(pixelSize) {
     return pixel;
 }
 
-let lastScreenW = 0, lastScreenH = 0;
+let enableGrid = false, lastScreenW = 0, lastScreenH = 0;
 
 function generateGrid() {
-    if (screen.width === lastScreenW && screen.height === lastScreenH) return;
+    if (!enableGrid || (screen.width === lastScreenW && screen.height === lastScreenH)) return;
     lastScreenW = screen.width;
     lastScreenH = screen.height;
 
@@ -95,6 +94,7 @@ function generateGrid() {
 document.addEventListener('DOMContentLoaded', function() {
     updateViewportText();
     fadeToTransparent();
+    generateGrid();
 
     window.addEventListener('resize', () => {
         updateViewportText();

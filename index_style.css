@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Geist:wght@800&family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&display=swap');
+
 :root {
     --text: #474747;
     --background: #ffffff;
@@ -12,8 +14,6 @@
     font-family: "Fira Sans";
     src: url('assets/fonts/GT-Walsheim-Regular-Trial.otf');
 }
-
-@import url('https://fonts.googleapis.com/css2?family=Geist:wght@800&family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&display=swap');
 
 .index-body {
     background-color: var(--background);
@@ -89,7 +89,7 @@
 
     background-color: var(--primary);
     border: 1px solid #38383823;
-    box-shadow: 8px 8px 30px 0px #38383852;
+    box-shadow: 8px 8px 30px 0 #38383852;
     border-radius: 35px;  
     
     font-family: Roboto, sans-serif;
@@ -99,10 +99,9 @@
     font-size: clamp(2rem, 5.5vw, 3.5rem);
     line-height: 0.9;
     letter-spacing: -0.02em;
-    
-    margin: 0;
-    margin-top: 20px;
-    
+
+    margin: 20px 0 0;
+
     transition: color 0.3s ease-in-out, letter-spacing 0.5s ease-in-out;
 }
 
@@ -136,6 +135,7 @@
     align-items: center;
     gap: 0.5rem;
 
+    font-family: "Fira Sans", sans-serif;
     font-size: clamp(1.5rem, 4vw, 2rem);
     font-weight: 700;
 
@@ -161,7 +161,7 @@
 p {
     color: var(--text);
     font-size: clamp(1.1rem, 3vw, 1.2rem);
-    line-height: 1.5;
+    line-height: 1.6;
     letter-spacing: 0.01em;
 }
 
@@ -172,6 +172,7 @@ p {
 
     opacity: 0.6;
     font-style: italic;
+    font-family: "Fira Sans", sans-serif;
     font-size: 1rem;
 }
 
