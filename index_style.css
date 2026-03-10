@@ -78,7 +78,7 @@
 
 .main-content-container {
     z-index: 100;
-    padding: clamp(20px, 8vw, 65px) max(20px, 50% - var(--main-content-width) / 2);
+    padding: clamp(20px, 6vw, 65px) max(20px, 50% - var(--main-content-width) / 2);
 
     margin-bottom: min(10vw, 150px);
 }
@@ -112,7 +112,7 @@
 }
 
 .home-subtitle {
-    font-size: clamp(1.5rem, 4vw, 2.25rem);
+    font-size: clamp(1.5rem, 4vw, 2.3rem);
     font-weight: 700;
     line-height: 1 1.8;
 
@@ -136,7 +136,7 @@
     align-items: center;
     gap: 0.5rem;
 
-    font-size: clamp(1.5rem, 4vw, 1.9rem);
+    font-size: clamp(1.5rem, 4vw, 2rem);
     font-weight: 700;
 
     margin-top: min(8vw, 50px);
